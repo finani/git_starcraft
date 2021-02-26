@@ -52,15 +52,13 @@ private:
     bool mSpeedUpgrade;
 };
 
-class Marine : public Unit {
+class Ghost : public Unit {
 public:
-    Marine();
-    Marine(float x_, float y_);
-    void IsZerglingNear(Location zerglingCurrentLocation_);
+    Ghost();
+    Ghost(float x_, float y_);
     void DisplayCurrentState() override;
     void DisplayDoneState() override;
 private:
-    bool mStimPack;
 };
 
 class Stalker : public Unit {

@@ -13,31 +13,30 @@ int main() {
     zergling.SetLocation(0,0);
     zergling.AddTargetLocation(50,0);
     zergling.AddTargetLocation(50,50);
-    Marine marine;
-    marine.SetLocation(0,0);
-    marine.AddTargetLocation(50,50);
+    Ghost ghost;
+    ghost.SetLocation(0,0);
+    ghost.AddTargetLocation(50,50);
     Stalker stalker;
     stalker.SetLocation(0,0);
     stalker.AddTargetLocation(10,20);
     stalker.AddTargetLocation(50,50);
-    while (!zergling.GetDone() || !marine.GetDone() || !stalker.GetDone()) {
+    while (!zergling.GetDone() || !ghost.GetDone() || !stalker.GetDone()) {
         zergling.IsSpeedUpgraded();
-        marine.IsZerglingNear(zergling.GetLocation());
         stalker.Blink(simTime);
         zergling.Move(simTime, dt);
-        marine.Move(simTime, dt);
+        ghost.Move(simTime, dt);
         stalker.Move(simTime, dt);
         if (simTime - checkTime > 5.0-dt) {
             cout << ">>simTime<<\t" << simTime << endl;
             zergling.DisplayCurrentState();
-            marine.DisplayCurrentState();
+            ghost.DisplayCurrentState();
             stalker.DisplayCurrentState();
             checkTime = simTime;
         }
         simTime += dt;
     }
     zergling.DisplayDoneState();
-    marine.DisplayDoneState();
+    ghost.DisplayDoneState();
     stalker.DisplayDoneState();
     return 0;
 }

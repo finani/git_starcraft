@@ -120,51 +120,31 @@ void Zergling::DisplayDoneState() {
 
 
 
-Marine::Marine()
-        :Unit(),
-         mStimPack(false)
+Ghost::Ghost()
+        :Unit()
 {
     mMoveSpeed = 1;
 }
 
-Marine::Marine(float x_, float y_)
-        :Unit(),
-         mStimPack(false)
+Ghost::Ghost(float x_, float y_)
+        :Unit()
 {
     mCurrentLocation.mX = x_;
     mCurrentLocation.mY = y_;
     mMoveSpeed = 1;
 }
 
-void Marine::IsZerglingNear(Location zerglingCurrentLocation_) {
-    float dX, dY, dXY;
-    dX = zerglingCurrentLocation_.mX - mCurrentLocation.mX;
-    dY = zerglingCurrentLocation_.mY - mCurrentLocation.mY;
-    dXY = sqrtf(dX * dX + dY * dY);
-    if (dXY < 5.0) {
-        mStimPack = true;
-        mMoveSpeed = 2;
-    }
-    else
-    {
-        mStimPack = false;
-        mMoveSpeed = 1;
-    }
-    return;
-}
-
-void Marine::DisplayCurrentState() {
+void Ghost::DisplayCurrentState() {
     string srStimPack;
-    srStimPack = mStimPack? "True":"False";
     cout << "\t[Marine Location Display]" << endl;
     cout << "[Location.x,y]\t" << mCurrentLocation.mX << "\t" << mCurrentLocation.mY << "\t" << \
     "[Heading_deg]\t" << mHeading_deg << endl;
-    cout << "[Speed]\t" << mMoveSpeed << "\t[StimPack]\t" << srStimPack << endl;
+    cout << "[Speed]\t" << mMoveSpeed << endl;
     cout << endl;
     return;
 }
 
-void Marine::DisplayDoneState() {
+void Ghost::DisplayDoneState() {
     cout << "\t[Marine Done State]" << endl;
     cout << "[DoneTime]\t" << mDoneTime << endl;
     cout << "[DonePosition]\t" << mDonePosition.mX << "\t" << mDonePosition.mY << endl;
