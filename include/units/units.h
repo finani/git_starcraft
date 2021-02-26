@@ -52,28 +52,22 @@ private:
     bool mSpeedUpgrade;
 };
 
-class Marine : public Unit {
+class Firebat : public Unit {
 public:
-    Marine();
-    Marine(float x_, float y_);
-    void IsZerglingNear(Location zerglingCurrentLocation_);
+    Firebat();
+    Firebat(float x_, float y_);
     void DisplayCurrentState() override;
     void DisplayDoneState() override;
 private:
-    bool mStimPack;
 };
 
-class Stalker : public Unit {
+class Dragoon : public Unit {
 public:
-    Stalker();
-    Stalker(float x_, float y_);
-    void Blink(float simTime_);
+    Dragoon();
+    Dragoon(float x_, float y_);
     void DisplayCurrentState() override;
     void DisplayDoneState() override;
 private:
-    float mBlinkDistance;
-    float mBlinkCoolTime;
-    float mBlinkTime;
 };
 
 #endif //CPP_ONBOARDING_RUN_UNITS_H

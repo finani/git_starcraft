@@ -13,31 +13,29 @@ int main() {
     zergling.SetLocation(0,0);
     zergling.AddTargetLocation(50,0);
     zergling.AddTargetLocation(50,50);
-    Marine marine;
-    marine.SetLocation(0,0);
-    marine.AddTargetLocation(50,50);
-    Stalker stalker;
-    stalker.SetLocation(0,0);
-    stalker.AddTargetLocation(10,20);
-    stalker.AddTargetLocation(50,50);
-    while (!zergling.GetDone() || !marine.GetDone() || !stalker.GetDone()) {
+    Firebat firebat;
+    firebat.SetLocation(0,0);
+    firebat.AddTargetLocation(50,50);
+    Dragoon dragoon;
+    dragoon.SetLocation(0,0);
+    dragoon.AddTargetLocation(10,20);
+    dragoon.AddTargetLocation(50,50);
+    while (!zergling.GetDone() || !firebat.GetDone() || !dragoon.GetDone()) {
         zergling.IsSpeedUpgraded();
-        marine.IsZerglingNear(zergling.GetLocation());
-        stalker.Blink(simTime);
         zergling.Move(simTime, dt);
-        marine.Move(simTime, dt);
-        stalker.Move(simTime, dt);
+        firebat.Move(simTime, dt);
+        dragoon.Move(simTime, dt);
         if (simTime - checkTime > 5.0-dt) {
             cout << ">>simTime<<\t" << simTime << endl;
             zergling.DisplayCurrentState();
-            marine.DisplayCurrentState();
-            stalker.DisplayCurrentState();
+            firebat.DisplayCurrentState();
+            dragoon.DisplayCurrentState();
             checkTime = simTime;
         }
         simTime += dt;
     }
     zergling.DisplayDoneState();
-    marine.DisplayDoneState();
-    stalker.DisplayDoneState();
+    firebat.DisplayDoneState();
+    dragoon.DisplayDoneState();
     return 0;
 }

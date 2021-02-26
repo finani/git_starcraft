@@ -120,51 +120,31 @@ void Zergling::DisplayDoneState() {
 
 
 
-Marine::Marine()
-        :Unit(),
-         mStimPack(false)
+Firebat::Firebat()
+        :Unit()
 {
     mMoveSpeed = 1;
 }
 
-Marine::Marine(float x_, float y_)
-        :Unit(),
-         mStimPack(false)
+Firebat::Firebat(float x_, float y_)
+        :Unit()
 {
     mCurrentLocation.mX = x_;
     mCurrentLocation.mY = y_;
     mMoveSpeed = 1;
 }
 
-void Marine::IsZerglingNear(Location zerglingCurrentLocation_) {
-    float dX, dY, dXY;
-    dX = zerglingCurrentLocation_.mX - mCurrentLocation.mX;
-    dY = zerglingCurrentLocation_.mY - mCurrentLocation.mY;
-    dXY = sqrtf(dX * dX + dY * dY);
-    if (dXY < 5.0) {
-        mStimPack = true;
-        mMoveSpeed = 2;
-    }
-    else
-    {
-        mStimPack = false;
-        mMoveSpeed = 1;
-    }
-    return;
-}
-
-void Marine::DisplayCurrentState() {
+void Firebat::DisplayCurrentState() {
     string srStimPack;
-    srStimPack = mStimPack? "True":"False";
     cout << "\t[Marine Location Display]" << endl;
     cout << "[Location.x,y]\t" << mCurrentLocation.mX << "\t" << mCurrentLocation.mY << "\t" << \
     "[Heading_deg]\t" << mHeading_deg << endl;
-    cout << "[Speed]\t" << mMoveSpeed << "\t[StimPack]\t" << srStimPack << endl;
+    cout << "[Speed]\t" << mMoveSpeed << endl;
     cout << endl;
     return;
 }
 
-void Marine::DisplayDoneState() {
+void Firebat::DisplayDoneState() {
     cout << "\t[Marine Done State]" << endl;
     cout << "[DoneTime]\t" << mDoneTime << endl;
     cout << "[DonePosition]\t" << mDonePosition.mX << "\t" << mDonePosition.mY << endl;
@@ -174,45 +154,30 @@ void Marine::DisplayDoneState() {
 
 
 
-Stalker::Stalker()
-        :Unit(),
-         mBlinkDistance(5.0),
-         mBlinkCoolTime(10.0),
-         mBlinkTime(0.0)
+Dragoon::Dragoon()
+        :Unit()
 {
     mMoveSpeed = 1;
 }
 
-Stalker::Stalker(float x_, float y_)
-        :Unit(),
-         mBlinkDistance(5.0),
-         mBlinkCoolTime(10.0),
-         mBlinkTime(0.0)
+Dragoon::Dragoon(float x_, float y_)
+        :Unit()
 {
     mCurrentLocation.mX = x_;
     mCurrentLocation.mY = y_;
     mMoveSpeed = 1;
 }
 
-void Stalker::Blink(float simTime_) {
-    if (!mDone && (simTime_ - mBlinkTime > mBlinkCoolTime)) {
-        mCurrentLocation.mX += mBlinkDistance *cos(mHeading_deg *const_D2R());
-        mCurrentLocation.mY += mBlinkDistance *sin(mHeading_deg *const_D2R());
-        mBlinkTime = simTime_;
-    }
-    return;
-}
-
-void Stalker::DisplayCurrentState() {
+void Dragoon::DisplayCurrentState() {
     cout << "\t[Stalker Location Display]" << endl;
     cout << "[Location.x,y]\t" << mCurrentLocation.mX << "\t" << mCurrentLocation.mY << "\t" << \
     "[Heading_deg]\t" << mHeading_deg << endl;
-    cout << "[Speed]\t" << mMoveSpeed << "\t[BlinkCoolTime]\t" << mBlinkCoolTime << endl;
+    cout << "[Speed]\t" << mMoveSpeed << endl;
     cout << endl;
     return;
 }
 
-void Stalker::DisplayDoneState() {
+void Dragoon::DisplayDoneState() {
     cout << "\t[Stalker Done State]" << endl;
     cout << "[DoneTime]\t" << mDoneTime << endl;
     cout << "[DonePosition]\t" << mDonePosition.mX << "\t" << mDonePosition.mY << endl;
