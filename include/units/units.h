@@ -58,7 +58,6 @@ public:
     Firebat(float x_, float y_);
     void DisplayCurrentState() override;
     void DisplayDoneState() override;
-private:
 };
 
 class Dragoon : public Unit {
